@@ -19,6 +19,16 @@
 .env.test.local
 .env.production.local
 
+#build
+build
+
+#coverage directort
+coverage
+
+#grunt
+.grunt
+
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
