@@ -14,12 +14,12 @@ process.env.NODE_ENV = "development";
 module.exports = {
   mode: "development",
   target: "web", // working in the browser
-  devTool: "cheap-module-source-map", // source maps allow us to see our original code in the browser for debugging
+  devtool: "cheap-module-source-map", // source maps allow us to see our original code in the browser for debugging
   entry: "./src/index",
   output: {
     path: path.resolve(__dirname, "build"),
     publicPath: "/", // public url of output directory when referenced in the browser
-    fileName: "bundle.js" // html will reference this file from memory
+    filename: "bundle.js" // html will reference this file from memory
   },
   devServer: {
     stats: "minimal",

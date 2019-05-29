@@ -1,8 +1,8 @@
 import React from "react";
 import { render } from "react-dom";
 
-function test() {
-  return <h1>Hello</h1>;
+function Hi() {
+  return <p>Hi.</p>;
 }
 
-render(<Test />, document.getElementById("app"));
+render(<Hi />, document.getElementById("app"));
