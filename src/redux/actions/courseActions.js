@@ -1,6 +1,6 @@
 const createCourse = courseData => ({
   type: "CREATE_COURSE",
-  data: courseData
+  courseData
 });
 
 export default createCourse;

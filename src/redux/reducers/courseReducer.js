@@ -1,7 +1,7 @@
-export default function courseReducer(state = { course: [] }, action) {
+export default function courseReducer(state = [], action) {
   switch (action.type) {
     case "CREATE_COURSE":
-      return { ...state, course: action.course };
+      return [...state, { ...action.courseData }];
     default:
       return state;
   }
