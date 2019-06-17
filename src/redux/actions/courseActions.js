@@ -1,5 +1,7 @@
+import * as types from "../constants/ActionConstants";
+
 const createCourse = courseData => ({
-  type: "CREATE_COURSE",
+  type: types.CREATE_COURSE,
   courseData
 });
 
