@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as courseAction from "../../redux/actions/courseActions";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
+import CourseList from "./CourseList";
 
 class CoursesPage extends Component {
   componentDidMount() {
@@ -10,13 +11,16 @@ class CoursesPage extends Component {
     loadCourses();
   }
   render() {
-    console.log(this.props.courses);
+    const { courses } = this.props;
+    console.log(courses);
     return (
       <Fragment>
         <h2>Courses</h2>
-        {this.props.courses.map(course => (
-          <div key={course.title}>{course.title}</div>
-        ))}
+        {courses.loading ? (
+          <h1>No data to display</h1>
+        ) : (
+          <CourseList courses={courses.courses} />
+        )}
       </Fragment>
     );
   }
