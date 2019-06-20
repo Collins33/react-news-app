@@ -1,22 +1,21 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import * as courseAction from "../../redux/actions/courseActions";
-import * as authorsAction from "../../redux/actions/authorActions";
+import { loadCourses } from "../../redux/actions/courseActions";
+import { loadAuthors } from "../../redux/actions/authorActions";
 
 import PropTypes from "prop-types";
-import { bindActionCreators } from "redux";
 import CourseList from "./CourseList";
 
 class CoursesPage extends Component {
   componentDidMount() {
-    const { loadCourses } = this.props.CourseActions;
-    const { loadAuthors } = this.props.AuthorActions;
+    const { loadAuthors, loadCourses } = this.props;
     loadCourses();
     loadAuthors();
   }
 
   renderAuthor(authors, courseAuthorId) {
-    return authors.find(author => author.id == courseAuthorId);
+    // eslint-disable-next-line react/no-unescaped-entities
+    return <td>{authors.find(author => author.id == courseAuthorId)}</td>;
   }
 
   render() {
@@ -50,12 +49,10 @@ function mapStateToProps({ courses, authors }) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    CourseActions: bindActionCreators(courseAction, dispatch),
-    AuthorActions: bindActionCreators(authorsAction, dispatch)
-  };
-}
+const mapDispatchToProps = {
+  loadCourses,
+  loadAuthors
+};
 
 export default connect(
   mapStateToProps,
