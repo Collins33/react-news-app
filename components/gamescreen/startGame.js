@@ -21,7 +21,12 @@ const StartGame = ({gameScreenTitle})=>
       <Text>
         Select a number
       </Text>
-      <Input style={inputField}/>
+      <Input 
+         style={inputField}
+         autoCapitalize='none' 
+         keyboardType='number-pad' 
+         maxLength={2}
+      />
       <View style={buttonContainer}>
         <View style={buttonStyle}><Button title="Reset" color={primaryColor}/></View>
         <View style={buttonStyle}><Button title="Confirm" color={secondaryColor}/></View>
@@ -56,7 +61,7 @@ const styles = StyleSheet.create({
     width: '40%'
   },
   inputField:{
-    width: '50%'
+    width: '50%',
   }
 })
 

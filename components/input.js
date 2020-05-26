@@ -5,7 +5,7 @@ const Input = (props)=>
 {
   const {inputField} = styles;
   return(
-    <TextInput style={{...inputField, ...props.style}}/>
+    <TextInput {...props} style={{...inputField, ...props.style}}/>
   )
 
 }
@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
     height: 30,
     borderBottomColor: 'grey',
     borderBottomWidth: 1,
-    marginVertical: 10
+    marginVertical: 10,
+    textAlign: 'center'
   }
 })
 
