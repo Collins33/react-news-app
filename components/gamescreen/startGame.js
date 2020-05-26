@@ -1,10 +1,12 @@
 import React from 'react';
 import { View, StyleSheet, Text, TextInput, Button} from 'react-native';
 import Card from '../card';
+import Colors from '../../constants/colors';
 
 const StartGame = ({gameScreenTitle})=>
 {
   const {startGameScreen, gameScreenTitleStyle, buttonContainer, inputContainer, buttonStyle} = styles
+  const {primaryColor, secondaryColor} = Colors;
   return(
     <View style={startGameScreen}>
     <Text style={gameScreenTitleStyle}>
@@ -16,8 +18,8 @@ const StartGame = ({gameScreenTitle})=>
       </Text>
       <TextInput />
       <View style={buttonContainer}>
-        <View style={buttonStyle}><Button title="Reset" color="#c717fc"/></View>
-        <View style={buttonStyle}><Button title="Confirm" color="#f7287b"/></View>
+        <View style={buttonStyle}><Button title="Reset" color={primaryColor}/></View>
+        <View style={buttonStyle}><Button title="Confirm" color={secondaryColor}/></View>
       </View>
     </Card>
    </View>
