@@ -5,7 +5,7 @@ import StartGame from './components/gamescreen/startGame';
 
 export default function App() {
   const headerTile = 'Guess a number'
-  const gameScreenTitle = 'The game screen'
+  const gameScreenTitle = 'Start a new game'
   const {container} = styles;
   return (
     <View style={container}>
