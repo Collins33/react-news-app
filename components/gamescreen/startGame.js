@@ -4,7 +4,7 @@ import Card from '../card';
 
 const StartGame = ({gameScreenTitle})=>
 {
-  const {startGameScreen, gameScreenTitleStyle, buttonContainer, inputContainer} = styles
+  const {startGameScreen, gameScreenTitleStyle, buttonContainer, inputContainer, buttonStyle} = styles
   return(
     <View style={startGameScreen}>
     <Text style={gameScreenTitleStyle}>
@@ -16,8 +16,8 @@ const StartGame = ({gameScreenTitle})=>
       </Text>
       <TextInput />
       <View style={buttonContainer}>
-        <Button title="Reset"/>
-        <Button title="Confirm"/>
+        <View style={buttonStyle}><Button title="Reset" color="#c717fc"/></View>
+        <View style={buttonStyle}><Button title="Confirm" color="#f7287b"/></View>
       </View>
     </Card>
    </View>
@@ -44,6 +44,9 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'space-between',
     paddingHorizontal: 15
+  },
+  buttonStyle:{
+    width: '40%'
   }
 })
 
