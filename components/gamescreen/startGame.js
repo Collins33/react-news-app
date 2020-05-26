@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Text, TextInput, Button} from 'react-native';
-import { black } from 'colorette';
+import Card from '../card';
 
 const StartGame = ({gameScreenTitle})=>
 {
@@ -10,7 +10,7 @@ const StartGame = ({gameScreenTitle})=>
     <Text style={gameScreenTitleStyle}>
       {gameScreenTitle}
     </Text>
-    <View style={inputContainer}>
+    <Card style={inputContainer}>
       <Text>
         Select a number
       </Text>
@@ -19,7 +19,7 @@ const StartGame = ({gameScreenTitle})=>
         <Button title="Reset"/>
         <Button title="Confirm"/>
       </View>
-    </View>
+    </Card>
    </View>
   )
 }
@@ -38,18 +38,6 @@ const styles = StyleSheet.create({
     width: 300,
     maxWidth: '80%',
     alignItems: 'center',
-    // exclusive to android
-    elevation: 8,
-    padding: 20,
-    borderRadius: 10,
-
-    // exclusive styling for IOS
-    shadowColor: 'black',
-    shadowOffset: {width: 0, height:2},
-    shadowRadius: 6,
-    shadowOpacity: 0.26,
-    backgroundColor: 'white'
-
   },
   buttonContainer:{
     flexDirection: 'row',
