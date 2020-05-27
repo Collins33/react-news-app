@@ -11,6 +11,10 @@ const StartGame = ({gameScreenTitle})=>
   {
      setEnteredValue(inputText.replace(/[^0-9]/g, ''));
   }
+
+  const resetInputHandler=()=>{
+    setEnteredValue('')
+  }
   const {startGameScreen, 
          gameScreenTitleStyle, 
         buttonContainer, 
@@ -39,7 +43,7 @@ const StartGame = ({gameScreenTitle})=>
          value={enteredValue}
       />
       <View style={buttonContainer}>
-        <View style={buttonStyle}><Button title="Reset" color={primaryColor}/></View>
+        <View style={buttonStyle}><Button title="Reset" color={primaryColor} onPress={resetInputHandler}/></View>
         <View style={buttonStyle}><Button title="Confirm" color={secondaryColor}/></View>
       </View>
     </Card>
