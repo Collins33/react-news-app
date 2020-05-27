@@ -1,10 +1,16 @@
-import React from 'react';
-import { View, StyleSheet, Text, TextInput, Button} from 'react-native';
+import React, {useState} from 'react';
+import { View, StyleSheet, Text, TextInput, Button, TouchableWithoutFeedback, Keyboard} from 'react-native';
 import Card from '../card';
 import Colors from '../../constants/colors';
 import Input from '../../components/input';
 const StartGame = ({gameScreenTitle})=>
 {
+  const [enteredValue, setEnteredValue] = useState('');
+
+  const updateInputValue=inputText=>
+  {
+     setEnteredValue(inputText.replace(/[^0-9]/g, ''));
+  }
   const {startGameScreen, 
          gameScreenTitleStyle, 
         buttonContainer, 
@@ -13,6 +19,9 @@ const StartGame = ({gameScreenTitle})=>
         inputField} = styles
   const {primaryColor, secondaryColor} = Colors;
   return(
+    <TouchableWithoutFeedback onPress={()=>{
+      Keyboard.dismiss()
+    }}>
     <View style={startGameScreen}>
     <Text style={gameScreenTitleStyle}>
       {gameScreenTitle}
@@ -26,6 +35,8 @@ const StartGame = ({gameScreenTitle})=>
          autoCapitalize='none' 
          keyboardType='number-pad' 
          maxLength={2}
+         onChangeText={updateInputValue}
+         value={enteredValue}
       />
       <View style={buttonContainer}>
         <View style={buttonStyle}><Button title="Reset" color={primaryColor}/></View>
@@ -33,6 +44,7 @@ const StartGame = ({gameScreenTitle})=>
       </View>
     </Card>
    </View>
+   </TouchableWithoutFeedback>
   )
 }
 
