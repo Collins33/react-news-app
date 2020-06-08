@@ -10,9 +10,13 @@ export default function App() {
   const [userInput, setUserInput] = useState();
   const [confirmTransition, setTransitionState] = useState(false)
   const [gameOver, setGameOver] = useState(false)
+  const [roundsTaken, setRounds] = useState(0);
+
   const getUserInput =(userNumber)=>{
     setUserInput(userNumber)
     setTransitionState(true)
+    setGameOver(false);
+    setRounds(0)
   }
   const headerTile = 'Guess a number'
   const gameScreenTitle = 'Start a new game'
@@ -21,9 +25,9 @@ export default function App() {
   if(confirmTransition)
   {
     if(gameOver){
-      gamePage = <GameOver />
+      gamePage = <GameOver setTransitionState={setTransitionState} roundsTaken={roundsTaken}/>
     }else{
-      gamePage = <PlayGame userChoice={userInput} setGameOver={setGameOver}/>
+      gamePage = <PlayGame userChoice={userInput} setGameOver={setGameOver} setRounds={setRounds}/>
     }
     
   }else{

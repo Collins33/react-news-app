@@ -49,6 +49,7 @@ const PlayGame = (props)=>
     const newGuess = generateRandomNumber(currentLow.current, currentHigh.current, currentGuess)
     // set state with the new value
     setCurrentGuess(newGuess)
+    props.setRounds(roundsTaken=> roundsTaken+1)
 
   }
   return (

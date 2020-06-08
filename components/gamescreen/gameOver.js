@@ -1,23 +1,45 @@
 import React from 'react';
-import { View, StyleSheet, Text} from 'react-native';
+import { View, StyleSheet, Text, Button} from 'react-native';
+import Card from '../card';
 
 const GameOver = (props)=>
 {
+  const {screen, buttonContainer, inputContainer} = styles;
   return(
-    <View>
-    <Text>
-      The game is over
-    </Text>
+  <View style={screen}>
+      <Card style={inputContainer}>
+        <Text>
+          The game is over
+        </Text>
+        <Text>
+          Rounds taken:{props.roundsTaken}
+        </Text>
+        <View style={buttonContainer}>
+        <Button title="Restart the game" onPress={()=>{props.setTransitionState(false)}}/>
+        </View>
+      </Card>
   </View>
-    
   )
 }
 
 const styles = StyleSheet.create({
   screen:{
     flex: 1,
-    justifyContent: 'center',
+    paddingTop: 30,
     alignItems: 'center'
+  },
+  buttonContainer:{
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
+    paddingHorizontal: 15,
+    marginLeft: '30%',
+    marginTop: 30
+  },
+  inputContainer:{
+    width: 300,
+    maxWidth: '80%',
+    alignItems: 'center',
   }
 })
 
