@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, TextInput, Button, TouchableWithoutFeedback, Ke
 import Card from '../card';
 import Colors from '../../constants/colors';
 import Input from '../../components/input';
-const StartGame = ({gameScreenTitle})=>
+const StartGame = ({gameScreenTitle, getUserInput})=>
 {
   const [enteredValue, setEnteredValue] = useState('');
   const [confirmed, setConfirmation] = useState(false)
@@ -27,19 +27,27 @@ const StartGame = ({gameScreenTitle})=>
     setConfirmedValue(confirmationValue);
     setEnteredValue('')
     setConfirmation(true)
+    Keyboard.dismiss()
   }
-  const {startGameScreen, 
-         gameScreenTitleStyle, 
-        buttonContainer, 
-        inputContainer, 
-        buttonStyle, 
-        inputField} = styles
+  const {
+    startGameScreen, 
+    gameScreenTitleStyle, 
+    buttonContainer, 
+    inputContainer, 
+    buttonStyle, 
+    inputField, 
+    confirmationCard
+  } = styles
   const {primaryColor, secondaryColor} = Colors;
 
   let confirmedOutput;
   if (confirmed) 
   {
-    confirmedOutput = <Text>Chosen number: {confirmedValue}</Text>
+    confirmedOutput = 
+    <Card style={confirmationCard}>
+      <Text>Chosen number: {confirmedValue}</Text>
+      <Button title="Start game" onPress={()=>getUserInput(confirmedValue)}/>
+    </Card>
   }
   return(
     <TouchableWithoutFeedback onPress={()=>{
@@ -98,6 +106,9 @@ const styles = StyleSheet.create({
   },
   inputField:{
     width: '50%',
+  },
+  confirmationCard:{
+    marginVertical: 25
   }
 })
 
