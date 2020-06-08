@@ -14,6 +14,9 @@ const GameOver = (props)=>
         <Text>
           Rounds taken:{props.roundsTaken}
         </Text>
+        <Text>
+          Computer Guess:{props.computerGuess}
+        </Text>
         <View style={buttonContainer}>
         <Button title="Restart the game" onPress={()=>{props.setTransitionState(false)}}/>
         </View>

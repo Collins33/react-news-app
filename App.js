@@ -11,6 +11,7 @@ export default function App() {
   const [confirmTransition, setTransitionState] = useState(false)
   const [gameOver, setGameOver] = useState(false)
   const [roundsTaken, setRounds] = useState(0);
+  const [computerGuess, setComputerGuess] = useState()
 
   const getUserInput =(userNumber)=>{
     setUserInput(userNumber)
@@ -25,9 +26,9 @@ export default function App() {
   if(confirmTransition)
   {
     if(gameOver){
-      gamePage = <GameOver setTransitionState={setTransitionState} roundsTaken={roundsTaken}/>
+      gamePage = <GameOver setTransitionState={setTransitionState} roundsTaken={roundsTaken} computerGuess={computerGuess}/>
     }else{
-      gamePage = <PlayGame userChoice={userInput} setGameOver={setGameOver} setRounds={setRounds}/>
+      gamePage = <PlayGame userChoice={userInput} setGameOver={setGameOver} setRounds={setRounds} setComputerGuess={setComputerGuess}/>
     }
     
   }else{

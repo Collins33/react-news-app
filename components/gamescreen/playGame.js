@@ -22,6 +22,7 @@ const PlayGame = (props)=>
     if(currentGuess === props.userChoice)
     {
       props.setGameOver(true)
+      props.setComputerGuess(currentGuess)
     }
   })
   // useRef ensures that we do not
