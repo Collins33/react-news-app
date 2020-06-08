@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import { View, StyleSheet, Text, Button, Alert} from 'react-native';
 import Card from '../card';
 const generateRandomNumber=(min, max, exclude)=>
@@ -18,6 +18,12 @@ const generateRandomNumber=(min, max, exclude)=>
 const PlayGame = (props)=>
 {
   const [currentGuess, setCurrentGuess] = useState(generateRandomNumber(1, 99, props.userChoice))
+  useEffect(()=>{
+    if(currentGuess === props.userChoice)
+    {
+      props.setGameOver(true)
+    }
+  })
   // useRef ensures that we do not
   // rerender the component when the values change
   const currentLow = useRef(1);
