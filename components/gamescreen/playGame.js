@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import { View, StyleSheet, Text, Button, Alert} from 'react-native';
 import Card from '../card';
 const generateRandomNumber=(min, max, exclude)=>
@@ -18,12 +18,31 @@ const generateRandomNumber=(min, max, exclude)=>
 const PlayGame = (props)=>
 {
   const [currentGuess, setCurrentGuess] = useState(generateRandomNumber(1, 99, props.userChoice))
+  // useRef ensures that we do not
+  // rerender the component when the values change
+  const currentLow = useRef(1);
+  const currentHigh = useRef(100)
   const {container, buttonContainer} = styles;
   const nextGuessHandler = direction=>
   {
     if((direction === 'lower' && props.userChoice > currentGuess)||(direction === 'greater' && props.userChoice < currentGuess)){
-      Alert.alert('Do not lie', 'Make sure you choose the correct button', [{title: 'Sorry!', style: 'cancel'}])
+      Alert.alert('Do not lie', 'Make sure you choose the correct button', [{title: 'Sorry!', style: 'cancel'}]);
+      return;
     }
+    if(direction === 'lower')
+    {
+      // if the guess is lower,
+      // the max value should be the previous guess
+      currentHigh.current = currentGuess
+    }else{
+      // if the guess is higher,
+      // the minimum value should be the current guess
+      currentLow.current = currentGuess
+    }
+    // generate the new guess
+    const newGuess = generateRandomNumber(currentLow.current, currentHigh.current, currentGuess)
+    // set state with the new value
+    setCurrentGuess(newGuess)
 
   }
   return (
