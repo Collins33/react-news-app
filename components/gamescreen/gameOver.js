@@ -1,16 +1,17 @@
 import React from 'react';
-import { View, StyleSheet, Text, Button} from 'react-native';
+import { View, StyleSheet, Text, Button, Image} from 'react-native';
 import Card from '../card';
 
 const GameOver = (props)=>
 {
-  const {screen, buttonContainer, inputContainer} = styles;
+  const {screen, buttonContainer, inputContainer, image} = styles;
   return(
   <View style={screen}>
       <Card style={inputContainer}>
         <Text>
           The game is over
         </Text>
+        <Image source={require('../../assets/original.png')} style={image}/>
         <Text>
           Rounds taken:{props.roundsTaken}
         </Text>
@@ -43,6 +44,10 @@ const styles = StyleSheet.create({
     width: 300,
     maxWidth: '80%',
     alignItems: 'center',
+  },
+  image:{
+    width:'80%',
+    height: 300
   }
 })
 
