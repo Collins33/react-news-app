@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: 'space-around',
     width: 300,
-    maxWidth: '80%'
+    maxWidth: '80%',
   }
 
 })

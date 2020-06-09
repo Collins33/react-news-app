@@ -1,18 +1,37 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import * as Font from 'expo-font';
+import {AppLoading} from 'expo'
 import Header from './components/header';
 import StartGame from './components/gamescreen/startGame';
 import PlayGame from './components/gamescreen/playGame';
 import GameOver from './components/gamescreen/gameOver';
 
-
+// the function returns a promise
+const loadFonts =()=>
+{
+  return Font.loadAsync({
+    'open-sans':require('./assets/fonts/OpenSans-Regular.ttf'),
+    'open-sans-bold':require('./assets/fonts/OpenSans-Bold.ttf')
+  })
+}
 export default function App() {
   const [userInput, setUserInput] = useState();
   const [confirmTransition, setTransitionState] = useState(false)
   const [gameOver, setGameOver] = useState(false)
   const [roundsTaken, setRounds] = useState(0);
   const [computerGuess, setComputerGuess] = useState()
+  const [loadAssets, setLoadAssets] = useState(false)
 
+  // if the assets have not been loaded, 
+  // return the AppLoading component
+  if(!loadAssets)
+  {
+    return <AppLoading 
+    startAsync={loadFonts}
+    onFinish={()=>{setLoadAssets(true)}}
+    />
+  }
   const getUserInput =(userNumber)=>{
     setUserInput(userNumber)
     setTransitionState(true)

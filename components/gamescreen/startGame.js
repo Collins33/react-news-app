@@ -58,7 +58,7 @@ const StartGame = ({gameScreenTitle, getUserInput})=>
       {gameScreenTitle}
     </Text>
     <Card style={inputContainer}>
-      <Text>
+      <Text style={gameScreenTitleStyle}>
         Select a number
       </Text>
       <Input 
@@ -88,7 +88,8 @@ const styles = StyleSheet.create({
   },
   gameScreenTitleStyle:{
     fontSize: 20,
-    marginVertical: 10
+    marginVertical: 10,
+    fontFamily: 'open-sans-bold'
   },
   inputContainer:{
     width: 300,
