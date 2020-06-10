@@ -1,25 +1,25 @@
 import React from 'react';
 import { View, StyleSheet, Text, Button, Image} from 'react-native';
 import Card from '../card';
-import { black } from 'ansi-colors';
+import Color from '../../constants/colors';
 
 const GameOver = (props)=>
 {
-  const {screen, buttonContainer, inputContainer, image, imageContainer} = styles;
+  const {screen, buttonContainer, inputContainer, image, imageContainer, gameText, gameTextSecondary} = styles;
   return(
   <View style={screen}>
       <Card style={inputContainer}>
-        <Text>
+        <Text style={gameText}>
           The game is over
         </Text>
         <View style={imageContainer}>
         <Image source={require('../../assets/original.png')} style={image}/>
         </View>
-        <Text>
-          Rounds taken:{props.roundsTaken}
+        <Text style={gameText}>
+          Rounds taken:<Text style={gameTextSecondary}>{props.roundsTaken}</Text>
         </Text>
-        <Text>
-          Computer Guess:{props.computerGuess}
+        <Text style={gameText}>
+          Computer Guess:<Text style={gameTextSecondary}>{props.computerGuess}</Text>
         </Text>
         <View style={buttonContainer}>
         <Button title="Restart the game" onPress={()=>{props.setTransitionState(false)}}/>
@@ -60,6 +60,12 @@ const styles = StyleSheet.create({
   image:{
     width:'100%',
     height: '100%'
+  },
+  gameText:{
+    fontFamily: 'open-sans-bold'
+  },
+  gameTextSecondary:{
+    color: Color.special
   }
 })
 
