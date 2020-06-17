@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, Button, Image} from 'react-native';
+import { View, StyleSheet, Text, Button, Image, Dimensions} from 'react-native';
 import Card from '../card';
 import Color from '../../constants/colors';
 
@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'space-between',
     paddingHorizontal: 15,
-    marginLeft: '30%',
-    marginTop: 30
+    marginLeft: Dimensions.get('window').width * 0.14,
+    marginTop: Dimensions.get('window').height > 600 ? 30:5
   },
   inputContainer:{
     width: 300,
@@ -49,13 +49,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   imageContainer:{
-    width:300,
-    height: 300,
-    borderRadius: 150,
+    width:Dimensions.get('window').width * 0.7,
+    height: Dimensions.get('window').width * 0.7,
+    borderRadius: Dimensions.get('window').width * 0.7/2,
     borderWidth:3,
     borderColor: 'black',
     overflow: 'hidden',
-    marginVertical: 30
+    marginVertical: Dimensions.get('window').height > 600 ? 30:5
   },
   image:{
     width:'100%',

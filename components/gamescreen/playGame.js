@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
-import { View, StyleSheet, Text, Button, Alert, ScrollView} from 'react-native';
+import { View, StyleSheet, Text, Button, Alert, ScrollView, Dimensions} from 'react-native';
 import Card from '../card';
 const generateRandomNumber=(min, max, exclude)=>
 {
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer:{
     flexDirection: 'row',
-    marginVertical: 20,
+    marginTop: Dimensions.get('window').height >600 ?30:20,
     padding: 10,
     justifyContent: 'space-around',
     width: 300,
